@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 import { Staff } from "./stafs.models";
 
 const PatientsSchema = new mongoose.Schema(
@@ -25,7 +25,14 @@ const PatientsSchema = new mongoose.Schema(
       required: true,
     },
 
-    consultedDoctor: {},
+    consultedDoctor: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Doctor",
+    },
+    medicine: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Medicine",
+    },
   },
   { timestamps: true }
 );
